@@ -7,10 +7,11 @@ admin.autodiscover()
 urlpatterns = patterns('',
     # Examples:
     url(r'^$', 'views.home'),
-    url(r'^dashboard/$', 'views.dashboard'),
-    url(r'^start/$', 'views.start'),
+    url(r'^qp/$', 'views.qp'),	    
+    url(r'^dashboard/$', 'views.start'),
+    url(r'^question/$', 'views.finished'),
     url(r'^getQuestions/$','views.getQuestions'),
-    url(r'^interview/$','views.interview'),
+    url(r'^interviewend/$','views.niralpage'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 

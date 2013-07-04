@@ -1,0 +1,21 @@
+<html>
+<head><title>Dashboard</title></head>
+
+<body>
+
+<ol>
+    {% for section, questions in qa.items %}
+
+    <li><h2>Section: {{ section }}</h2>
+    <ul>
+	{% for q in questions%}
+	<li>Q: <p>{{ q.0}}</p></li>
+	<li>A: <p>{{ q.1}}</p></li>
+	{% endfor %}
+    </ul>
+    </li>
+    {% endfor %}
+</ol>
+</body>
+</html>
+

@@ -1,0 +1,43 @@
+<html>
+    <head>
+	<!-- <script type="text/javascript" src="/proj/interveu/qa/scripts/jquery-1.9.1.min.js"></script> -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" ></script>
+    <script type="text/javascript">
+	var questionslist;
+	var index = 0;
+	$(document).ready(function() {
+		
+		$.getJSON("/getQuestions",function(resp)
+		    {
+		    questionslist = resp;
+		    // comment the following , they are for debugging purpose.
+		        $.each( resp, function( key, value ) {
+			            console.log( key + " : " + value );
+				        });
+
+		    });	
+
+		$("#nextbtn").click(function () {
+		    $.each(questionlist,function(key,val) {
+			var linkText = val.valueOf();
+			$("#showquestion").html(linkText);
+			});
+		    });
+		});
+
+    </script>
+    <title>Dashboard</title>
+    </head>
+
+    <body>
+	<div id="showquestion">	
+	</div>
+	<form method="post" action="">
+	    <textarea name="comments" cols="100" rows="20">
+		Enter your answers here...
+	    </textarea><br>
+	    <input id="nextbtn" type="button" value="Next" />
+	</form>
+    </body>
+</html>
+

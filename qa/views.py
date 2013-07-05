@@ -56,7 +56,7 @@ def start(request):
     dic["sec2question1"] = "What is working capital?"
     dic["sec2question2"] = "What is a deferred tax liability and why might one be created?"
 
-    return render_to_response('question.html',dic)
+    return render_to_response('interview.html',dic)
     
 
 def qp(request):

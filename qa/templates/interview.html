@@ -1,66 +1,64 @@
 <html>
     <head>
-    <link type = "text/css" rel = "stylesheet" href = "dashboard.css">
-    <title>Dashboard</title>
+	<!--link type = "text/css" rel = "stylesheet" href = "dashboard.css"-->
+	<title>Dashboard</title>
     </head>
 
     <body>    
 
-     
-<form action ="/question/" method="post">
-     
-     <h2>{{sectionname1}} </h2>
-    
-<div id = "showquestion1">
-    
-    {{sec1question1}}
 
-</div>
+	<form action ="/question/" method="post">
 
-<div>
-            <textarea name="sec1question1answer" cols="50" rows="5"></textarea><br>
-</div>     
-        
-<div id = "showquestion2">
-    
-    {{sec1question2}}
+	    <h2>{{sectionname1}} </h2>
 
-</div>
+	    <div id = "showquestion1">
 
-<div>
-            <textarea name="sec1question2answer" cols="50" rows="5"></textarea><br>
-</div>    
-    
-     
-     <h2>{{sectionname2}} </h2>
-    
-<div id = "showquestion1">
-    
-    {{sec2question1}}
+		{{sec1question1}}
 
-</div>
+	    </div>
 
-<div>
-            <textarea name="sec2question1answer" cols="50" rows="5"></textarea><br>
-</div>     
-        
-<div id = "showquestion2">
-    
-    {{sec2question2}}
+	    <div>
+		<textarea name="sec1question1answer" cols="50" rows="5"></textarea><br>
+	    </div>     
 
-</div>
+	    <div id = "showquestion2">
 
-<div>
-            <textarea name="sec2question2answer" cols="50" rows="5"></textarea><br>
-</div>    
-    
-<input type="submit" value="finished" class = "btn">
+		{{sec1question2}}
 
-</form>
-     
-   </body>
+	    </div>
+
+	    <div>
+		<textarea name="sec1question2answer" cols="50" rows="5"></textarea><br>
+	    </div>    
+
+
+	    <h2>{{sectionname2}} </h2>
+
+	    <div id = "showquestion1">
+
+		{{sec2question1}}
+
+	    </div>
+
+	    <div>
+		<textarea name="sec2question1answer" cols="50" rows="5"></textarea><br>
+	    </div>     
+
+	    <div id = "showquestion2">
+
+		{{sec2question2}}
+
+	    </div>
+
+	    <div>
+		<textarea name="sec2question2answer" cols="50" rows="5"></textarea><br>
+	    </div>    
+
+	    <input type="submit" value="finished">
+
+	</form>
+
+    </body>
 
 </html>
-    
-    
 

@@ -12,7 +12,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': '/proj/interveu/qa/db/qa.db',      # Or path to database file if using sqlite3.
+        'NAME': '/proj/ship/qa/db/qa.db',      # Or path to database file if using sqlite3.
         'USER': '',                      # Not used with sqlite3.
         'PASSWORD': '',                  # Not used with sqlite3.
         'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
@@ -103,7 +103,7 @@ ROOT_URLCONF = 'qa.urls'
 WSGI_APPLICATION = 'qa.wsgi.application'
 
 TEMPLATE_DIRS = (
-'/proj/interveu/qa/templates',
+'/proj/ship/qa/templates',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

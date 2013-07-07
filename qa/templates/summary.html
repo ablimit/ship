@@ -1,34 +1,24 @@
 <html>
-
-<head><title>Summary</title>
-<link type = "text/css" rel = "stylesheet" href = "summary.css/static/">
-</head>
-
-<body>
-
-<form method = "get">
-
-<h1>Interview Results</h1>
-
-<table> 
-<!--{% load staticfiles %} -->
-<!--img src="{% static "summary.css" %}"/-->
-    <tr>
-        <td>{{sec1question1answer}}<td>
-    </tr>
-     <tr>
-        <td>{{sec1question2answer}}<td>
-    </tr>
-     <tr>
-        <td>{{sec2question1answer}}<td>
-    </tr>
-     <tr>
-        <td>{{sec2question2answer}}<td>
-    </tr>
-</table>
-
-<form>
-
-</body>
-
+    <link type = "text/css" rel = "stylesheet" href="/static/css/summary.css">
+    <head><title>Summary</title>
+    </head>
+    <body>
+	<h1>Interview Results</h1>
+	<table> 
+	    <!--{% load staticfiles %} -->
+	    <!--img src="{% static "summary.css" %}"/-->
+	    <tr>
+		<td>{{sec1question1answer}}</td>
+	    </tr>
+	    <tr>
+		<td>{{sec1question2answer}}</td>
+	    </tr>
+	    <tr>
+		<td>{{sec2question1answer}}</td>
+	    </tr>
+	    <tr>
+		<td>{{sec2question2answer}}</td>
+	    </tr>
+	</table>
+    </body>
 </html>

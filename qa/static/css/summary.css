@@ -2,3 +2,8 @@ h1 {
     font-family: Courier New;
     font-size: 50%; 
 }
+
+table {
+    font-family: times;
+    font-size: 3px solid black;
+}

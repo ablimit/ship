@@ -1,0 +1,20 @@
+
+    Company:
+
+    ship
+    Application Name:
+
+    Resume Builder
+    API Key:
+
+    fnv6hgzvzb8o
+    Secret Key:
+
+    WeSpyxZaKm8dCnnF
+    OAuth User Token:
+
+    9a64fb29-1fe4-4cdd-9097-0b411c37cb9f
+    OAuth User Secret:
+
+    17f96fc4-c1b6-40e2-8931-c64788700100
+

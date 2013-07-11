@@ -10,6 +10,7 @@ urlpatterns = patterns('',
     url(r'^$', 'views.home'),
     url(r'^login/$', 'views.login'),
     url(r'^userinfo/$', 'views.getuserinfo'),
+    url(r'^showuserinfo/$', 'views.showuserinfo'),
     url(r'^interview/$', 'views.start'),
     url(r'^summary/$', 'views.summary'),
     # Uncomment the admin/doc line below to enable admin documentation:

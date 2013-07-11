@@ -9,25 +9,16 @@ import datetime
 from django.core.context_processors import csrf
 #custom library
 from linkedin import linkedin
+import urlparse
 
 # qa ={"Technical":(("Why do capital expenditures increase assets (PP&E), while other cash outflows, like paying salary, taxes, etc., do not create any asset, and instead instantly create an expense on the income statement that reduces equity via retained earnings?" , "Capital expenditures are capitalized because of the timing of their estimated benefits the lemonade stand will benefit the firm for many years. The employees work, on the other hand, benefits the period in which the wages are generated only and should be expensed then. This is what differentiates an asset from an expense."),("Why are increases in accounts receivable a cash reduction on the cash flow  statement?" , "Since our cash flow statement starts with net income, an increase in accounts receivable is an adjustment to net income to reflect the fact that the company never actually received those funds.")),\
 # "Defintion":(("What is working capital?" , "Working capital is defined as current assets minus current liabilities; it tells the financial statement user how much cash is tied up in the business through items such as  receivables and inventories and also how much cash is going to be needed to pay off short term obligations in the next 12 months."),("What is a deferred tax liability and why might one be created?" , "Deferred tax liability is a tax expense amount reported on a companys income statement that is not actually paid to the IRS in that time period, but is expected to be paid in the future. It arises because when a company actually pays less in taxes to the IRS than they show as an expense on their income statement in a reporting period. Differences in depreciation expense between book reporting (GAAP) and IRS reporting can lead to differences in income between the two, which ultimately leads to differences in tax expense reported in the financial statements and taxes payable to the IRS."),("What is a deferred tax asset and why might one be created?" , "Deferred tax asset arises when a company actually pays more in taxes to the IRS than they show as an expense on their income statement in a reporting period.")) }
-
-app = None
 
 def home(request):
     t = get_template('index.html')
     homepage= t.render(Context())
     return HttpResponse(homepage)
-
-def login(request): 
-    data = linkedinlogin()
-    return HttpResponseRedirect(data[0])
-
-def getuserinfo(request): 
-    global app
-    return HttpResponseRedirect(app.get_profile())
-
+    
 def current_datetime(request):
     now = datetime.datetime.now()
     html = "<html><body>It is now %s.</body></html>" % now
@@ -87,9 +78,7 @@ def persisttoDB(data):
     for key in data:
         print data[key] 
         
-
-def linkedinlogin():
-    global app 
+def login(request):
     API_KEY = 'fnv6hgzvzb8o'
     API_SECRET = 'WeSpyxZaKm8dCnnF'
     RETURN_URL = 'http://127.0.0.1:8000/userinfo'
@@ -97,7 +86,15 @@ def linkedinlogin():
     authentication = linkedin.LinkedInAuthentication(API_KEY, API_SECRET, RETURN_URL, linkedin.PERMISSIONS.enums.values())
     print authentication.authorization_url  # open this url on your browser 
     application = linkedin.LinkedInApplication(authentication)
-    app = application
-    return (authentication.authorization_url, application)  # open this url on your browser 
+     
+    response = HttpResponseRedirect(authentication.authorization_url) 
+    print response
     
+    authentication.authorization_code = response.GET['code']
+    print "This is authoriztion code:", authentication.authorization_code
+    authentication.get_access_token()
     
+def getAuthorizationCode(url): 
+    parsed = urlparse.urlparse(url)
+    authorization_code = urlparse.parse_qs(parsed.query)['code']
+    return authorization_code

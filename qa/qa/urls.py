@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     url(r'^$', 'views.home'),
     url(r'^login/$', 'views.login'),
     url(r'^userinfo/$', 'views.getuserinfo'),
-    url(r'^interview/$', 'views.generateInterview'),
+    url(r'^interview/$', 'views.interviewUser'),
     url(r'^summary/$', 'views.evaluateInterview'),
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

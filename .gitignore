@@ -1,0 +1,9 @@
+*.log
+*.mr
+*.err
+*.out
+*.dat
+*.bz2
+*.gz
+*.eps
+*.pyc

@@ -7,13 +7,11 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 import datetime
 from django.core.context_processors import csrf
-#custom library
+
+# custom libraries
 from linkedin import linkedin
-import urlparse
-#Generic View 
-#from django.views.generic import ListView
-#from django.views.generic.list import ListView
-#from questions.models import Questions
+from shiputils import prettyTable
+
 
 # qa ={"Technical":(("Why do capital expenditures increase assets (PP&E), while other cash outflows, like paying salary, taxes, etc., do not create any asset, and instead instantly create an expense on the income statement that reduces equity via retained earnings?" , "Capital expenditures are capitalized because of the timing of their estimated benefits the lemonade stand will benefit the firm for many years. The employees work, on the other hand, benefits the period in which the wages are generated only and should be expensed then. This is what differentiates an asset from an expense."),("Why are increases in accounts receivable a cash reduction on the cash flow  statement?" , "Since our cash flow statement starts with net income, an increase in accounts receivable is an adjustment to net income to reflect the fact that the company never actually received those funds.")),\
 # "Defintion":(("What is working capital?" , "Working capital is defined as current assets minus current liabilities; it tells the financial statement user how much cash is tied up in the business through items such as  receivables and inventories and also how much cash is going to be needed to pay off short term obligations in the next 12 months."),("What is a deferred tax liability and why might one be created?" , "Deferred tax liability is a tax expense amount reported on a companys income statement that is not actually paid to the IRS in that time period, but is expected to be paid in the future. It arises because when a company actually pays less in taxes to the IRS than they show as an expense on their income statement in a reporting period. Differences in depreciation expense between book reporting (GAAP) and IRS reporting can lead to differences in income between the two, which ultimately leads to differences in tax expense reported in the financial statements and taxes payable to the IRS."),("What is a deferred tax asset and why might one be created?" , "Deferred tax asset arises when a company actually pays more in taxes to the IRS than they show as an expense on their income statement in a reporting period.")) }
@@ -61,34 +59,18 @@ def getQuestions(request):
     questions = json.dumps(qa)
     return HttpResponse(questions,mimetype="application/json")
     
-#def start(request):
-    #dic = {}
-    #dic["sectionname1"] = "Technical"  
-    #dic["sec1question1"] = "Why do capital expenditures increase assets (PP&E), while other cash outflows, like paying salary, taxes, etc., do not create any asset, and instead instantly create an expense on the income statement that reduces equity via retained earnings?"
-    #dic["sec1question2"] = "Why are increases in accounts receivable a cash reduction on the cash flow  statement?"
-    #dic["sectionname2"] = "Defintion"
-    #dic["sec2question1"] = "What is working capital?"
-    #dic["sec2question2"] = "What is a deferred tax liability and why might one be created?"
+def start(request):
+    dic = {}
+    dic["sectionname1"] = "Technical"  
+    dic["sec1question1"] = "Why do capital expenditures increase assets (PP&E), while other cash outflows, like paying salary, taxes, etc., do not create any asset, and instead instantly create an expense on the income statement that reduces equity via retained earnings?"
+    dic["sec1question2"] = "Why are increases in accounts receivable a cash reduction on the cash flow  statement?"
+    dic["sectionname2"] = "Defintion"
+    dic["sec2question1"] = "What is working capital?"
+    dic["sec2question2"] = "What is a deferred tax liability and why might one be created?"
 
-    #return render_to_response('interview.html',dic)
-
-def generateInterview(LinkedinProfile = "", Field = ""):
-    questions = [(1, "What is Cashflow?"),(2, "What is a price to equity ratio?"),(3, "How do you value a company?"),(4, "Describe your experience at Udemy?")]
+    return render_to_response('interview.html',dic)
     
-    return render_to_response('interview.html')       
-    
-def evaluateInterview(interview):
-    #Ameen will implment this function
-    
-    answers = [0.9, 0.5, 0.1, 0.2]     
-    
-#class InterviewQuestions(ListView):
-    model = Questions
-    context_object_name = 'interviewquestions'
-    
-    get_template('questions/questions_list.html')    
-    
-def summary(request): 
+def summary(request):
     dic = {}
     dic["sec1question1answer"] = request.GET['sec1question1answer']
     dic["sec1question2answer"] = request.GET['sec1question2answer']
@@ -113,7 +95,7 @@ def login(request):
     authentication = linkedin.LinkedInAuthentication(API_KEY, API_SECRET, RETURN_URL, linkedin.PERMISSIONS.enums.values())
     print authentication.authorization_url  # open this url on your browser 
     application = linkedin.LinkedInApplication(authentication)
-    print "Ablimit requested this:", authentication.authorization_url  
+    # print "Ablimit requested this:", authentication.authorization_url  
     return HttpResponseRedirect(authentication.authorization_url)  
     #response = HttpResponseRedirect(authentication.authorization_url) 
     #print response
@@ -126,14 +108,11 @@ def getuserinfo(request):
     global authentication
     global application
     authentication.authorization_code = request.GET['code']
-    print "This is the code:", authentication.authorization_code 
+    # print "This is the code:", authentication.authorization_code 
     authentication.get_access_token() 
-    print application.get_profile()
+    # print application.get_profile()
     profiledic = application.get_profile(selectors=['positions']) 
     
-    return render_to_response('linkedinprofile.html',profiledic)	
+    return HttpResponse(prettyTable(profiledic))
+    #return render_to_response('linkedinprofile.html',profiledic)	
     
-def getAuthorizationCode(url): 
-    parsed = urlparse.urlparse(url)
-    authorization_code = urlparse.parse_qs(parsed.query)['code']
-    return authorization_code

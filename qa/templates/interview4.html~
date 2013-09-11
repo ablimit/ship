@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Interview</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="/static/css/interview.css" rel="stylesheet">
+
+  </head>
+
+<body>
+
+	<div class="navbar navbar-fixed-top">
+		<div class = "navbar-inner">
+		<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+         </button>
+			<a class="brand" href="#">Interview</a>
+		</div>
+	</div>
+		
+	<div class = "question">
+	<!--{% csrf_token %}-->
+		<p>{{question4}}</p>
+	</div>
+	
+	<form action = "/feedback/" class = "answer" method = "GET">
+	    <input type = "text" name = "question1answer" class = "span8" placeholder = "Write your answer here or click the mic below to record your answer...">{{question1answer}}
+	</form>
+	<form>
+	    <span class = "continue"><input type="submit" class="btn btn-primary btn-large" action = "/interview5/" value="next"/></span>
+    </form>	
+
+    <!--JavaScript-->
+   
+    <script src="/static/js/jquery.js"></script>
+    <script src="/static/js/bootstrap.js"></script>
+
+  </body>
+</html>

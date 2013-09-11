@@ -1,0 +1,17 @@
+<html>
+<head><title>Interview</title></head>
+
+<body>
+
+{% block content %}
+    <ul>
+        {% for question in questions_list %}
+         <li>{{questions.question_content}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}    
+
+</body>
+
+</html>
+

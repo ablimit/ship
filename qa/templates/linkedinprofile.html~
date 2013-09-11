@@ -1,0 +1,10 @@
+<html>
+    <head><title>LinkedinProfile</title></head>
+    <body>    
+        <h1>First Name {{firstName}}</h1> 
+        <h1>Last Name {{lastName}}</h1>
+        <h1>Business Title {{headline}}</h1>
+        <h1>Position {{position}}</h1>
+    </body>
+</html>
+

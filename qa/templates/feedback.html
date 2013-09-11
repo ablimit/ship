@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<html lang="en">
+<head>
+	<title>Homepage</title>
+	<link href="/static/css/feedback.css" rel="stylesheet" media="screen">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet"> 
+	
+</head>
+
+<body>
+	
+	
+	<div class="navbar navbar-fixed-top">
+		<div class = "navbar-inner">
+		<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+         </button>
+			<ul class = "nav">
+			<a class="brand" href="#">Interview</a>
+				<li class="text-center"><a href="#">Profile</a></li>
+				<li class="text-center"><a href="#">Industry Info</a></li>
+				<li class="text-center"><a href="#">Jobs</a></li>
+				<li class="text-center"><a href="#">Campus Recruiting</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div class="reportcard">
+	
+		<ul id = "tabs" class= "nav nav-tabs" data-tabs="tabs">
+			<li class="active"><a href="#Results" data-toggle="tab">Results</a><li>
+			<li><a href="#Jobsuggestions" data-toggle="tab">Job Suggestions</a></li>
+		</ul>
+		
+		<div id="my-tab-content" class="tab-content">
+			<div class="tab-pane active" id="Results">
+				<div class = "jobtitle">
+					<h4><em>Summary Results for Goldman Sachs Investment-Banking Analyst Position</em></h4>
+				</div>
+			
+				<div class = "reportcardheading"> 
+					<h4 class = "rcheading">Overall Score</h4>
+						<div class = "progress progress-striped active">
+							<div class = "bar" style = "width: 40%;"></div>
+						</div>
+				</div>
+				
+				<div class = "reportcardqa">
+					<h4 class = "answeranalysisheading">Answer Analysis</h4>
+						<div class = "group">
+							<h5 class = "question">{{question1}}</h5>
+							<h5 class = "answer">Your Answer is : {{question1answer}}</h5>
+							<h5>The following are best answers</h5>
+							<h5 class = "answer">Answer</h5>
+							<h5 class = "relevancyscore">Score relvance</h5>
+							<h5 class = "answer">Answer</h5>
+							<h5 class = "relevancyscore">Score relvance</h5>
+						</div>	
+		</div>
+		
+			<div class="tab-pane" id="Jobsuggestions">
+				<h1>Financial Analyst</h1>
+			</div>
+		
+		</div>
+	
+	
+	<!--JavaScript-->
+	<script type="text/javascript">
+		jQuery(document).ready(function ($) {
+			$('#tabs').tab();
+		});
+	</script>   
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap-tab.js"></script>
+	<script type="text/javascript" src="/static/js/bootstrap.js"></script>
+	
+    </body>
+</html>
